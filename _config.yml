@@ -10,8 +10,6 @@ header_pages:
 
 style: dark
 
-footer: 'giridhar prasath, <a href="https://twitter.com/giridhar_prasat">twitter</a>'
-
 # Build settings
 markdown: kramdown
 remote_theme: b2a3e8/jekyll-theme-console

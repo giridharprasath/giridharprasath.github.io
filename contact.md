@@ -1,5 +1,5 @@
 ---
-title: /contact
+title: ping
 layout: page
 permalink: /contact
 ---
