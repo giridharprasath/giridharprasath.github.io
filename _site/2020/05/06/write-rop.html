@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="shortcut icon" type="image/png" href="/assets/favicon.png">
+ <title>giridharprasath.github.iorop-write</title><!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="rop-write" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="c4n4ry(1000pts)" />
+<meta property="og:description" content="c4n4ry(1000pts)" />
+<link rel="canonical" href="http://localhost:4000/2020/05/06/write-rop.html" />
+<meta property="og:url" content="http://localhost:4000/2020/05/06/write-rop.html" />
+<meta property="og:site_name" content="giridharprasath.github.io" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-06T00:00:00+05:30" />
+<script type="application/ld+json">
+{"dateModified":"2020-05-06T00:00:00+05:30","datePublished":"2020-05-06T00:00:00+05:30","description":"c4n4ry(1000pts)","url":"http://localhost:4000/2020/05/06/write-rop.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/05/06/write-rop.html"},"headline":"rop-write","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" type="text/css" href="/assets/main-dark.css"></head>
+<body>
+    <div class="container"><header>
+  <h1> giridhar prasath </h1>
+  <div class="menu">
+    <ul><li><a href="/">home</a></li><li><a href="/about/">about</a></li><li><a href="/contact">ping</a></li></ul>
+  </div>
+</header>
+<main>
+      <h1 id="c4n4ry1000pts">c4n4ry(1000pts)</h1>
+
+<p>This pwn challenge is from zh3r0 CTF which had a good set of problems for beginners.</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-Arch:     amd64-64-little
+-RELRO:    Partial RELRO
+-Stack:    No canary found
+-NX:       NX enabled
+-PIE:      No PIE (0x400000)
+</span></code></pre></div></div>
+<p>No ASLR or PIE only NX is enabled.</p>
+
+<h1 id="binary-analysis">Binary analysis</h1>
+
+<p>The bug is at <code class="highlighter-rouge">vuln</code> function. There is a custom canary set in bss section. <code class="highlighter-rouge">vuln</code> compares the custom canary <code class="highlighter-rouge">key</code> with our input. <code class="highlighter-rouge">key</code> is only 4bytes. Bruteforce is the only option. There were hints that said <code class="highlighter-rouge">key</code> is an ordered-lower-case string which made it even easier, there is a <code class="highlighter-rouge">gets</code> which leads to a vanilla stack bof and with no canary we can start our exploitation.</p>
+
+<h1 id="exploit">Exploit</h1>
+
+<p><code class="highlighter-rouge">key</code> is present 192 bytes from the <code class="highlighter-rouge">gets</code> buffer. rbp is 12 bytes after <code class="highlighter-rouge">key</code>. we get control of ret address</p>
+
+<h2 id="gadgets">Gadgets</h2>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+0x0000000000400927 : mov qword ptr [r11], r12 ; ret
++0x0000000000400933 : pop r11 ; ret
++0x0000000000400936 : pop r12 ; ret
++0x0000000000400939 : pop rdi ; ret
+</span></code></pre></div></div>
+
+<p>There is a writeable page of 2000 bytes in the binary at <code class="highlighter-rouge">0x602000-0x603000</code>. So we gonna write “//bin/sh” in some memory and pop some gadgets.</p>
+
+<h1 id="final-exploit">Final exploit</h1>
+
+<p><code class="highlighter-rouge">JUNK + CANARY + JUNK + POP_R12_RET + BIN_SH + POP_R11_RET + WRITE + POP_RDI + WRITE + SYSTEM_ADDR</code></p>
+
+<h2 id="full-exploit-and-binary">Full exploit and binary</h2>
+<p><a href="https://github.com/GiridharPrasath/ctf/tree/master/pwn">c4n4ry</a></p>
+
+
+    </main>
+    </div>
+  </body>
+</html>
