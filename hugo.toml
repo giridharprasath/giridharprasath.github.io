@@ -1,6 +1,6 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://giridharprasath.github.io'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Personal blog'
 theme = 'nightfall'
 
 
@@ -16,7 +16,7 @@ name = "twitter"
 url = "https://www.example.com"
 
 [[params.social]]
-key = 2
+key = 5
 name = "mastodon"
 url = "https://www.example.com"
 rel = "me"  # You can also add rel to social link
