@@ -1,0 +1,22 @@
+// tasks.json
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Hugo Build and Serve",
+            "type": "shell",
+            "command": "hugo",
+            "args": ["-D", "serve"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

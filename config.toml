@@ -1,0 +1,54 @@
+baseURL = 'https://giridharprasath.github.io'
+languageCode = 'en-us'
+themesDir = "themes"
+theme = 'nightfall'
+title = 'z3phyr'
+
+# config.toml
+
+[markup]
+  [markup.highlight]
+    noClasses=false
+
+[params]
+author = "z3phyr"
+user = "z3phyr"
+hostname = 'giridharprasath.github.io'
+footerHtml = '2023 <a href="https://twitter.com/z3phyrrrrr" class="footerLink">Giridhar Prasath</a> © CC BY 4.0'
+customCSS = "css/custom.css"  # Adjust the path based on your project structure
+
+[menu]
+  [[menu.header]]
+    name = "blog"
+    weight = 1
+    url = "/post"
+
+  [[menu.header]]
+    name = "About"
+    weight = 0
+    url = "/about"
+
+[[params.social]]
+key = 0
+name = "Github"
+url = "https://github.com/GiridharPrasath"
+icon = "fa fa-github"  # Add link to your icon font to `layouts/partials/custom-head.html`
+
+[[params.social]]
+key = 1
+name = "Twitter"
+url = "https://twitter.com/z3phyrrrrr"
+icon = "fa fa-twitter"  # Add link to your icon font to `layouts/partials/custom-head.html`
+
+
+[[params.social]]
+key = 2
+name = "Linkedin"
+url = "https://www.linkedin.com/in/giridhar-p-601316b8/"
+icon = "fa fa-linkedin"  # Add link to your icon font to `layouts/partials/custom-head.html`
+
+[[params.social]]
+key = 3
+name = "Email"
+url = "mailto:email@giridh1337@gmail.com"
+icon = "fa fa-envelope"  # Add link to your icon font to `layouts/partials/custom-head.html`
