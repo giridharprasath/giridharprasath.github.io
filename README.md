@@ -1,3 +1,3 @@
 # personal blog
 
-github pages      - https://pages.github.com/ <br />
+github pages       - https://pages.github.com/ <br />
