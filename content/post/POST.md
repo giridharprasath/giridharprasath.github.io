@@ -17,7 +17,7 @@ The blog post tries to explain the idea of fully homomorphic encryption, Conside
 FHE allows you to calculate the encrypted ciphertext say $c'$ without needing to decrypt $m1, \ m2$, Hence for the operator $\oplus$
 
 <p align="center">
-  <img src="/images/image-1.png">
+  <img src="/static/images/image-1.png">
 </p>
 
 $$\begin{align*} \text{enc}{\text{pk}}(m_1)\ {\oplus}\ \text{enc}{\text{pk}}(m_2) &= \text{enc}{\text{pk}}(m_1\ {+}\ m_2) \end{align*}$$
