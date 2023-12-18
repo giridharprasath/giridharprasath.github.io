@@ -1,4 +1,4 @@
-baseURL = 'https://z3phyr.github.io'
+baseURL = 'https://giridharprasath.github.io'
 languageCode = 'en-us'
 themesDir = "themes"
 theme = 'nightfall'
@@ -25,7 +25,7 @@ title = 'z3phyr'
 [params]
 author = "z3phyr"
 user = "z3phyr"
-hostname = 'z3phyr.github.io'
+hostname = 'giridharprasath.github.io'
 footerHtml = '© 2023 <a href="https://twitter.com/z3phyrrrrr" class="footerLink">z3phyr</a>. CC BY 4.0'
 customCSS = "css/custom.css"  # Adjust the path based on your project structure
 
