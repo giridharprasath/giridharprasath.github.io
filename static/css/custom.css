@@ -1,5 +1,9 @@
 /* static/css/custom.css */
 
+.body .div .h1 {
+  color: darkkhaki;
+}
+
 .fa-github, .fa-twitter, .fa-envelope, .fa-linkedin {
     font-size: 3em; /* Adjust the size as needed */
 }
@@ -14,4 +18,20 @@
 
 .body .div .a {
     font-size: 4em;
+}
+
+.postListItem:hover .postTitle {
+  color: blue;
+}
+
+.postListItem:hover {
+  scale: 1.01;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
+  text-decoration: none;
 }

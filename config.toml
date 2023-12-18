@@ -1,4 +1,4 @@
-baseURL = 'https://giridharprasath.github.io'
+baseURL = 'https://z3phyr.github.io'
 languageCode = 'en-us'
 themesDir = "themes"
 theme = 'nightfall'
@@ -7,14 +7,26 @@ title = 'z3phyr'
 # config.toml
 
 [markup]
-  [markup.highlight]
-    noClasses=false
+    [markup.highlight]
+        anchorLineNos = false
+        codeFences = true
+        guessSyntax = false
+        hl_Lines = ''
+        hl_inline = false
+        lineAnchors = ''
+        lineNoStart = 1
+        lineNos = true
+        lineNumbersInTable = true
+        noClasses = true
+        noHl = false
+        style = 'doom-one'
+        tabWidth = 4
 
 [params]
 author = "z3phyr"
 user = "z3phyr"
-hostname = 'giridharprasath.github.io'
-footerHtml = '2023 <a href="https://twitter.com/z3phyrrrrr" class="footerLink">Giridhar Prasath</a> © CC BY 4.0'
+hostname = 'z3phyr.github.io'
+footerHtml = '© 2023 <a href="https://twitter.com/z3phyrrrrr" class="footerLink">z3phyr</a>. CC BY 4.0'
 customCSS = "css/custom.css"  # Adjust the path based on your project structure
 
 [menu]
