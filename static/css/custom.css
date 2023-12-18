@@ -20,12 +20,56 @@
     font-size: 4em;
 }
 
+.postDate {
+  float: right;
+  color: white;
+}
+
+.postTitle {
+  color: lightblue;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 1.2em;
+  float: left;
+  transition: color 0.2s ease-in-out;
+}
+
 .postListItem:hover .postTitle {
-  color: blue;
+  color:cadetblue
+}
+
+.postHeader {
+  overflow: hidden;
+}
+
+.postsList {
+  margin-top: 20px;
+}
+
+.postListItem {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  transition: scale 0.2s ease-in-out;
 }
 
 .postListItem:hover {
   scale: 1.01;
+}
+
+.postExcerpt {
+  text-align: initial;
+  text-decoration: none;
+  color: $white;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.noDecoration {
+  text-decoration: none;
 }
 
 a,
@@ -34,4 +78,122 @@ a:visited,
 a:hover,
 a:active{
   text-decoration: none;
+}
+
+body {
+  color: white;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color:cadetblue;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: lightblue;
+}
+
+a:visited {
+  color: purple;
+  transition: color 0.2s ease-in-out;
+}
+
+a:visited:hover {
+  color: lightpink;
+}
+
+.code-summary-inner {
+  color: lightgoldenrodyellow;
+}
+
+table > tbody > tr > td > pre {
+  margin: 0;
+}
+
+code { 
+  font-size: large;
+}
+
+pre code {
+  font-family: Hack;
+  font-size: 95%;
+  display: block;
+  background: black;
+  padding: 10px;
+  overflow: auto;
+  color: lightseagreen;
+}
+
+.highlight > div > table::-webkit-scrollbar {
+  height: 12px;
+}
+
+.highlight > div > table::-webkit-scrollbar-track {
+  background-color: black
+}
+
+.highlight > div > table::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 2px;
+}
+
+.highlight > div > table::-webkit-scrollbar-thumb:hover {
+  background-color: white
+}
+
+code.has-jax {
+  -webkit-font-smoothing: antialiased;
+  background: inherit !important;
+  border: none !important;
+  font-size: 100%;
+}
+
+blockquote {
+  background: brown;
+  border-left: 5px solid blueviolet;
+  padding-left: 5px;
+  border-radius: 5px;
+}
+
+blockquote > p > code {
+  color: orange;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+th {
+  text-align: center;
+  padding: 3px;
+}
+
+td {
+  text-align: left;
+  padding: 3px;
+}
+
+tr {
+  border-bottom: 1px solid gray;
+}
+
+tr:nth-child(even) {
+  background-color: black;
+}
+
+.body .div .h1 {
+  color: orange;
+}
+img {
+  max-width: 100%;
+  height: auto;
 }
