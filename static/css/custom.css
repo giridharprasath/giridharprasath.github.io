@@ -1,5 +1,13 @@
 /* static/css/custom.css */
 
+mjx-container[jax="CHTML"][display="true"] {
+  overflow-x: auto;
+  overflow-y: auto;
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
 .body .div .h1 {
   color: darkkhaki;
 }
@@ -152,13 +160,6 @@ pre code {
 
 .highlight>div>table::-webkit-scrollbar-thumb:hover {
   background-color: white
-}
-
-code.has-jax {
-  -webkit-font-smoothing: antialiased;
-  background: inherit !important;
-  border: none !important;
-  font-size: 100%;
 }
 
 blockquote {
