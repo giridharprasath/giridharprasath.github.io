@@ -4,20 +4,29 @@
   color: darkkhaki;
 }
 
-.fa-github, .fa-twitter, .fa-envelope, .fa-linkedin {
-    font-size: 3em; /* Adjust the size as needed */
+.fa-github,
+.fa-twitter,
+.fa-envelope,
+.fa-linkedin {
+  font-size: 3em;
+  /* Adjust the size as needed */
 }
 
-.fa-github:hover, .fa-twitter:hover, .fa-envelope:hover, .fa-linkedin:hover {
-    transform: scale(1.2); /* Increase the size on hover */
+.fa-github:hover,
+.fa-twitter:hover,
+.fa-envelope:hover,
+.fa-linkedin:hover {
+  transform: scale(1.2);
+  /* Increase the size on hover */
 }
 
 .headerLinks ul li a {
-    font-size: 1.5em; /* Adjust the size as needed */
+  font-size: 1.5em;
+  /* Adjust the size as needed */
 }
 
 .body .div .a {
-    font-size: 4em;
+  font-size: 4em;
 }
 
 .postDate {
@@ -35,7 +44,7 @@
 }
 
 .postListItem:hover .postTitle {
-  color:cadetblue
+  color: cadetblue
 }
 
 .postHeader {
@@ -60,7 +69,7 @@
 .postExcerpt {
   text-align: initial;
   text-decoration: none;
-  color: $white;
+  color: white;
 }
 
 .headerContainer {
@@ -76,7 +85,7 @@ a,
 a:link,
 a:visited,
 a:hover,
-a:active{
+a:active {
   text-decoration: none;
 }
 
@@ -89,7 +98,7 @@ body {
 }
 
 a {
-  color:cadetblue;
+  color: cadetblue;
   transition: color 0.2s ease-in-out;
 }
 
@@ -110,11 +119,11 @@ a:visited:hover {
   color: lightgoldenrodyellow;
 }
 
-table > tbody > tr > td > pre {
+table>tbody>tr>td>pre {
   margin: 0;
 }
 
-code { 
+code {
   font-size: large;
 }
 
@@ -128,20 +137,20 @@ pre code {
   color: lightseagreen;
 }
 
-.highlight > div > table::-webkit-scrollbar {
+.highlight>div>table::-webkit-scrollbar {
   height: 12px;
 }
 
-.highlight > div > table::-webkit-scrollbar-track {
+.highlight>div>table::-webkit-scrollbar-track {
   background-color: black
 }
 
-.highlight > div > table::-webkit-scrollbar-thumb {
+.highlight>div>table::-webkit-scrollbar-thumb {
   background-color: gray;
   border-radius: 2px;
 }
 
-.highlight > div > table::-webkit-scrollbar-thumb:hover {
+.highlight>div>table::-webkit-scrollbar-thumb:hover {
   background-color: white
 }
 
@@ -159,7 +168,7 @@ blockquote {
   border-radius: 5px;
 }
 
-blockquote > p > code {
+blockquote>p>code {
   color: orange;
 }
 
@@ -193,12 +202,16 @@ tr:nth-child(even) {
 .body .div .h1 {
   color: orange;
 }
+
 img {
   max-width: 100%;
   height: auto;
 }
 
-@media (max-width:600px) {
-  .about-us-text,
-  .about-us-images { width:100% } 
+code.has-jax {
+  font: inherit;
+  font-size: 100%;
+  background: inherit;
+  border: inherit;
+  color: #515151;
 }

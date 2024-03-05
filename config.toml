@@ -26,7 +26,10 @@ title = 'z3phyr'
         tabWidth = 4
 
 [params]
-author = "z3phyr"
+#author = "z3phyr"
+  [params.author]
+    name = "z3phyr"  # Website and RSS feed author
+    email = "giridh1337@gmail.com"  # RSS feed email address
 user = "z3phyr"
 hostname = 'giridharprasath.github.io'
 footerHtml = '© 2023 <a href="https://twitter.com/z3phyrrrrr" class="footerLink">z3phyr</a>. CC BY 4.0'
