@@ -42,9 +42,14 @@ customCSS = "css/custom.css"  # Adjust the path based on your project structure
     url = "/post"
 
   [[menu.header]]
-    name = "About"
+    name = "about"
     weight = 0
     url = "/about"
+
+  [[menu.header]]
+    name = "cv"
+    weight = 0
+    url = "/pdf/cv.pdf"
 
 [[params.social]]
 key = 0
