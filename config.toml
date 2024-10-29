@@ -67,7 +67,7 @@ icon = "fa fa-twitter"  # Add link to your icon font to `layouts/partials/custom
 [[params.social]]
 key = 2
 name = "Linkedin"
-url = "https://www.linkedin.com/in/giridhar-p-601316b8/"
+url = "https://www.linkedin.com/in/giridhar-prasath-r-601316b8"
 icon = "fa fa-linkedin"  # Add link to your icon font to `layouts/partials/custom-head.html`
 
 [[params.social]]
@@ -75,3 +75,9 @@ key = 3
 name = "Email"
 url = "mailto:email@giridh1337@gmail.com"
 icon = "fa fa-envelope"  # Add link to your icon font to `layouts/partials/custom-head.html`
+
+[[params.social]]
+key = 3
+name = "Instagram"
+url = "https://www.instagram.com/giridhar.prasath/"
+icon = "fa fa-instagram"  # Add link to your icon font to `layouts/partials/custom-head.html`
