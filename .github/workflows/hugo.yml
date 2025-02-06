@@ -86,7 +86,7 @@ jobs:
           path: ./public
 
       - name: Debug - List Downloaded Files
-        run: ls -lah ./public
+        run: ls -lah ./publicpages
 
       - name: Deploy to GitHub Pages
         id: deployment
