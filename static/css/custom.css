@@ -208,3 +208,70 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.header,
+.main {
+  width: min(100%, 900px);
+  min-width: 0;
+}
+
+.postWrapper,
+.content,
+.postWrapper > * {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.postWrapper {
+  overflow-wrap: anywhere;
+}
+
+.postWrapper pre,
+.postWrapper .highlight,
+.postWrapper .highlight > div,
+.postWrapper .highlight > div > table {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.postWrapper pre {
+  white-space: pre;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .postWrapper {
+    padding: 16px;
+  }
+
+  .postWrapper h1 {
+    font-size: 1.7em;
+    overflow-wrap: anywhere;
+  }
+
+  .postWrapper h2 {
+    font-size: 1.35em;
+    overflow-wrap: anywhere;
+  }
+
+  .postWrapper p,
+  .postWrapper li,
+  .postWrapper dd {
+    overflow-wrap: anywhere;
+  }
+
+  .postWrapper pre {
+    font-size: 0.8em;
+  }
+}
