@@ -16,7 +16,10 @@ const date = post.data.date.toLocaleDateString('en-US', { timeZone: 'UTC', year:
     <header class="article-header">
       <span class="eyebrow">post</span>
       <h1>{post.data.title}</h1>
-      <div class="article-meta">{date} {post.data.tags?.length ? ` / ${post.data.tags.join(' / ')}` : ''}</div>
+      <div class="article-meta">
+        {date}
+        {post.data.tags?.map((tag) => <a href={`/tags/${tag.toLowerCase()}/`}> #{tag}</a>)}
+      </div>
     </header>
     <div class="article-body">
       <Content />
