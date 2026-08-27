@@ -1,3 +1,9 @@
-# personal blog
+# z3phyr
 
-github pages       - https://pages.github.com/ <br />
+Personal blog built with Astro and deployed as a static site to GitHub Pages.
+
+```text
+npm install
+npm run dev
+npm run build
+```

@@ -1,0 +1,17 @@
+{
+  "name": "z3phyr-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "latest",
+    "astro": "latest",
+    "katex": "latest",
+    "rehype-katex": "latest",
+    "remark-math": "latest"
+  }
+}
