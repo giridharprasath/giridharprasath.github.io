@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('posts')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title="Writing">
+  <section class="page-intro">
+    <span class="eyebrow">writing</span>
+    <h1>All posts.</h1>
+    <p>Notes on systems, security, reverse engineering, and cryptography.</p>
+  </section>
+  <section class="post-list" aria-label="Posts">
+    {posts.map((post) => (
+      <a class="post-card" href={`/post/${post.id}/`}>
+        <div class="post-meta">{post.data.date.toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'short', day: 'numeric' })}</div>
+        <h2>{post.data.title}</h2>
+        {post.data.summary && <p>{post.data.summary}</p>}
+      </a>
+    ))}
+  </section>
+</BaseLayout>
