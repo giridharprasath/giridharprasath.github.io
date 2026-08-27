@@ -241,6 +241,24 @@ img {
   overflow-x: auto;
 }
 
+.postWrapper .highlight > div > table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.postWrapper .highlight > div > table td {
+  max-width: 0;
+}
+
+.postWrapper .highlight > div > table td:last-child {
+  width: 100%;
+}
+
+.postWrapper .highlight > div > table td:last-child pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .postWrapper pre {
   white-space: pre;
 }
