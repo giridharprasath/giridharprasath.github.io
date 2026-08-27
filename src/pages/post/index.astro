@@ -4,11 +4,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const posts = (await getCollection('posts')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<BaseLayout title="Writing">
+<BaseLayout title="Posts">
   <section class="page-intro">
-    <span class="eyebrow">writing</span>
-    <h1>All posts.</h1>
-    <p>Notes on systems, security, reverse engineering, and cryptography.</p>
+    <span class="eyebrow">posts</span>
+    <h1>Posts</h1>
   </section>
   <section class="post-list" aria-label="Posts">
     {posts.map((post) => (

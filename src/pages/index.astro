@@ -6,12 +6,15 @@ const posts = (await getCollection('posts')).sort((a, b) => b.data.date.valueOf(
 ---
 <BaseLayout title="Home">
   <section class="page-intro">
-    <span class="eyebrow">software / security / cryptography</span>
-    <h1>Notes from the low level.</h1>
-    <p>Writing about systems, security, reverse engineering, and the occasional mathematical detour.</p>
+    <h1>Posts</h1>
+    <div class="profile-links" aria-label="Profile links">
+      <a href="https://github.com/GiridharPrasath">github</a>
+      <a href="https://twitter.com/z3phyrrrrr">twitter</a>
+      <a href="https://www.linkedin.com/in/giridhar-prasath-r-601316b8">linkedin</a>
+    </div>
   </section>
-  <section aria-labelledby="recent-writing">
-    <div class="eyebrow" id="recent-writing">recent writing</div>
+  <section aria-labelledby="posts">
+    <div class="eyebrow" id="posts">posts</div>
     <div class="post-list">
       {posts.map((post) => (
         <a class="post-card" href={`/post/${post.id}/`}>

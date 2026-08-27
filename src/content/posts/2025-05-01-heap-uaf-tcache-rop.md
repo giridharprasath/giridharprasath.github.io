@@ -10,7 +10,7 @@ summary: "Heap UAF to tcache poisoning to stack ROP: all mitigations enabled, gl
 
 I created this heap challenge recently. It uses a classic menu-based allocator with alloc, free, view, and edit operations. The exploitation path was interesting(atleast for me) enough to write up(pretty much extensively).
 
-This differs a little bit from the usual heap challenges because **every mitigation is enabled**: Full RELRO, PIE, Canary, NX, and FORTIFY. There are no shortcuts. The GOT cannot be overwritten, the stack cannot be smashed directly, and even `__free_hook` (which exists in glibc 2.31) does not work cleanly because of the SUID privilege situation. The chain is: heap leak --> tcache poison --> fake chunk --> unsorted bin --> libc leak --> environ --> stack leak --> ROP. It uses three separate tcache poisons.
+This differs a little bit from the usual heap challenges because **every mitigation is enabled**: Full RELRO, PIE, Canary, NX, and FORTIFY. There are no shortcuts. The GOT cannot be overwritten, the stack cannot be smashed directly, and even `__free_hook` (which exists in glibc 2.31) does not work cleanly because of the SUID privilege situation. The chain is heap leak to tcache poison to fake chunk to unsorted bin to libc leak to environ to stack leak to ROP. It uses three separate tcache poisons.
 
 ## the binary
 
@@ -140,7 +140,7 @@ free_slot(0)
 free_slot(1)
 ```
 
-tcache bin for 0x40 now looks like: `chunk1 --> chunk0`
+tcache bin for 0x40 now looks like: `chunk1` points to `chunk0`
 
 chunk1's user data starts with the FD pointer to chunk0. since the pointer in `allocs[1]` was never cleared:
 
@@ -160,7 +160,7 @@ now we poison chunk1's FD pointer to point inside chunk2's data area:
 edit(1, p64(heap + 0x70))
 ```
 
-`heap + 0x70` lands right at the start of chunk2's user data. tcache now thinks the chain is: `chunk1 --> (heap+0x70)`
+`heap + 0x70` lands right at the start of chunk2's user data. tcache now treats the chain as `chunk1` pointing to `(heap+0x70)`.
 
 ```python
 alloc()
@@ -295,7 +295,7 @@ edit(poison + 2, chain)
 when main returns, it pops our ROP chain off the stack:
 
 ```
-setuid(0) --> system("/bin/sh")
+setuid(0) then system("/bin/sh")
 ```
 
 ## exploit
