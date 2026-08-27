@@ -74,8 +74,8 @@ this is where the bug lives. let me just show the disassembly:
 ```asm
 free_chunk:
     ...
-    call   free@plt                ; free(allocs[idx].ptr)
-    mov    qword [rbx+0x8], 0x0    ; allocs[idx].size = 0
+    call   free@plt
+    mov    qword [rbx+0x8], 0x0
     ...
 ```
 
@@ -86,12 +86,12 @@ it frees the chunk and zeros the **size** field. but it never NULLs out the **po
 ```asm
 view_chunk:
     ...
-    mov    rsi, [rdx+rax]        ; rsi = allocs[idx].ptr
-    test   rsi, rsi              ; if (ptr != NULL)
+    mov    rsi, [rdx+rax]
+    test   rsi, rsi
     je     invalid
-    mov    edx, 0x30             ; write 0x30 bytes
-    mov    edi, 1                ; fd = stdout
-    call   write@plt             ; write(1, ptr, 0x30)
+    mov    edx, 0x30
+    mov    edi, 1
+    call   write@plt
 ```
 
 it checks `if (ptr != NULL)`, but since free doesn't NULL the pointer, this check passes on freed chunks. we can read 0x30 bytes of freed heap data. **UAF read**.
@@ -101,13 +101,13 @@ it checks `if (ptr != NULL)`, but since free doesn't NULL the pointer, this chec
 ```asm
 edit_chunk:
     ...
-    cmp    qword [rbx], 0x0      ; if (allocs[idx].ptr != NULL)
+    cmp    qword [rbx], 0x0
     je     invalid
     ...
-    mov    rsi, [rbx]             ; rsi = allocs[idx].ptr
-    mov    edx, 0x2f              ; read 0x2f bytes
-    xor    edi, edi               ; fd = stdin
-    call   read@plt               ; read(0, ptr, 0x2f)
+    mov    rsi, [rbx]
+    mov    edx, 0x2f
+    xor    edi, edi
+    call   read@plt
 ```
 
 It checks the pointer, not the size, so we can write 0x2f bytes to freed memory. **UAF write**.
